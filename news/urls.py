@@ -4,5 +4,5 @@ from rest_framework import routers
 from .views import PickViewSet
 
 
-router = routers.DefaultRouter()
-router.register(r'picks', PickViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'picks', PickViewSet)

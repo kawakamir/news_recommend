@@ -16,10 +16,15 @@ Including another URLconf
 
 from django.conf.urls import url, include
 from django.contrib import admin
-
-from news.urls import router as news_router
+from django.urls import path
+from news import views
+from rest_framework.urlpatterns import format_suffix_patterns
+# from news.urls import router as news_router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(news_router.urls)),
+    # url(r'^api/(?P<pk>[0-9]+)/$', views.PickViewSet.as_view()),
+    path('api/<int:pk>/', views.PickViewSet.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
