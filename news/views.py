@@ -14,7 +14,10 @@ import numpy as np
 
 class PickViewSet(APIView):
     def get(self, request, pk):
-      user_pick_matrix = np.zeros((4,20))
+      if pk >= 4:
+        user_pick_matrix = np.zeros((pk,20))
+      else:
+        user_pick_matrix = np.zeros((4,20))
       for pick in Pick.objects.all():
         user_pick_matrix[pick.user_id-1][pick.pick_id-1] = 1
 
