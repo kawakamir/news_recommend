@@ -50,7 +50,7 @@ class PickViewSet(APIView):
           denominator += similarity[1]
           numerator += similarity[1]*(user_pick_vector[i] - np.mean(user_pick_vector))
         predict = avg_target + (numerator / denominator) if denominator > 0 else -1
-        rankings.append((i, predict))
+        rankings.append((i+1, predict))
       rankings = sorted(rankings, key=lambda r: r[1], reverse=True)
       return Response(rankings)
 
